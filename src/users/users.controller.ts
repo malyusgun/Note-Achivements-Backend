@@ -11,26 +11,26 @@ export class UsersController {
 
   @Get('')
   async getAllUsers(): Promise<UsersResponseDto> {
-    return await this.userService.getAllUsers();
+    return this.userService.getAllUsers();
   }
 
   @Get(':id')
-  async getUser(@Body() userId: string): Promise<UserResponseDto | null> {
-    return await this.userService.getUser(userId);
+  async getUser(@Body() nickname: string): Promise<UserResponseDto | null> {
+    return this.userService.getUser(nickname);
   }
 
   @Post('add')
   async createUser(@Body() dto: CreateUserDto): Promise<UserResponseDto> {
-    return await this.userService.createUser(dto);
+    return this.userService.createUser(dto);
   }
 
   @Patch(':id')
   async editUser(@Body() dto: UpdateUserDto): Promise<UserResponseDto> {
-    return await this.userService.editUser(dto);
+    return this.userService.editUser(dto);
   }
 
   @Delete(':id')
   async deleteUser(@Body() userId: string): Promise<UserResponseDto> {
-    return await this.userService.deleteUser(userId);
+    return this.userService.deleteUser(userId);
   }
 }

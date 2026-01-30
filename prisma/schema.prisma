@@ -8,11 +8,12 @@ datasource db {
 
 model User {
   userId                String @id @default(uuid())
-  nickname              String
+  nickname              String @unique
   email                 String @unique
   favoriteTheme         String
   favoriteSecondTheme   String
   password              String
+  workspace             Workspace[]
 }
 
 model Workspace {
@@ -21,4 +22,7 @@ model Workspace {
   icon        String
   link        String
   blocks      Json
+
+  userId      String
+  user        User @relation(fields: [userId], references: [userId], onDelete: Cascade)
 }
